@@ -1,7 +1,7 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
 
@@ -9,40 +9,40 @@ public class Main {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		
 		String dice = br.readLine();
-		String[] sArray = dice.split(" "); 
-		int[] diceArray = new int[3];
+		StringTokenizer token = new StringTokenizer(dice," ");
 		
-		for(int i =0; i < diceArray.length; i++) {
-			diceArray[i] = Integer.parseInt(sArray[i]);
-		}
-		for(int i =0; i < diceArray.length; i++) {
-			for(int j =i + 1; j < diceArray.length; j++) {
-				if (diceArray[i] < diceArray[j]) {
-					int rp = diceArray[i];
-					diceArray[i] = diceArray[j];
-					diceArray[j] = rp;
-				}
-			}
-		}
+		int a = Integer.parseInt(token.nextToken());
+		int b = Integer.parseInt(token.nextToken());
+		int c = Integer.parseInt(token.nextToken());
+		int max = 0;
 		
-		if(diceArray[0] == diceArray[1] && diceArray[0] == diceArray[2]) {
-			System.out.println(10000 + diceArray[1] * 1000);	
-		}else 
-		if(diceArray[0] != diceArray[1] && diceArray[1] != diceArray[2] ) {
-			System.out.println(diceArray[0] * 100);
-		}else {
-			if(diceArray[0] == diceArray[1]) {
-				System.out.println(diceArray[0] *100 + 1000 );
-			}else
-			if(diceArray[1] == diceArray[2]) {
-				System.out.println(diceArray[1] *100 + 1000 );
-			}	
+		if(a==b && b==c && a==c) {
+			System.out.println(a*1000 + 10000);
 			
-		}	
+		}else
+		if(a==b || a==c) {
+			System.out.println(a*100 + 1000);
+			
+		}else
+		if(b==c) {
+			System.out.println(b*100 + 1000);
+			
+		}else
+		if(!(a==b && a==c && b==c)) {
+			if(a>b && a>c) {
+				max = a;
+				System.out.println(a*100);
+			}else
+			if(b>a && b>c) {
+				max = b;
+				System.out.println(b*100);
+			}else {
+				System.out.println(c*100);
+			}	
 		
+		}	
+			
 	}
 		
 }
-	
