@@ -35,9 +35,8 @@ public class Main {
 				}
 
 			}
-			bw.write(String.format("%.3f", (double)count*100/nn) + "%\n");	
+			System.out.printf("%.3f%%\n" ,(double)count*100/nn);
 		}
-		bw.flush();
-		bw.close();
+	
 	}	
 }
