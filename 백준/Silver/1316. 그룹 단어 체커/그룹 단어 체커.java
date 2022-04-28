@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
 
 
 public class Main {
@@ -11,35 +12,46 @@ public class Main {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		int count = 0;
 		int n = Integer.parseInt(br.readLine());
+		int count = 0;
 		
 		for(int i=0; i<n; i++) {
 			
-			char[] c = br.readLine().toCharArray(); 
+			String str = br.readLine();
 			
+			if(test(str) == true) {
+				
+				count +=1;
+			}	
+		}
+		System.out.println(count);
+	}
+	
+	static boolean test(String str) {
 		
-			for(int j =0; j<c.length; j++) {
-				if(j<c.length-1) {
-					if(c[j] != c[j+1]) {
+		HashSet<Character> h = new HashSet<>();
 					
-						for(int k = j+1; k < c.length; k++ ) {
-							
-							if(c[j] == c[k]) {
-								k += 101;
-								j += 101;
-							}	
-						}
-						
-					}
-				}else { 
-					count +=1;
+		h.add(str.charAt(0));	
+		char k = str.charAt(0);
+			
+		for(int i =0; i<str.length(); i++) {
+			
+			if(str.charAt(i) != k  ) {
+				
+				if(h.contains(str.charAt(i))) {
+					return false;
+				}else {
+					h.add(str.charAt(i));
+					k = str.charAt(i);
 				}
 				
 			}
-		}
-		System.out.println(count);
-
-
+			
+			
+		}	
+		
+		return true;
 	}
+	
+	
 }
