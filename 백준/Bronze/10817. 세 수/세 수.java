@@ -13,9 +13,9 @@ public class Main {
 
     public static int med(int a, int b, int c) {
         if (a >= b) {
-            if (b >= c) {
+            if (b > c) {
                 return b;
-            } else if (a <= c) {
+            } else if (a < c) {
                 return a;
             } else {
                 return c;
